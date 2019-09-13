@@ -1,8 +1,8 @@
-const Product = (props) =>(
+const Products = (props) =>(
 
     <div>
         products
     </div>
 )
 
-export default Product;
+export default Products;
