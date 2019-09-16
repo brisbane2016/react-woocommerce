@@ -1,5 +1,5 @@
 const clientConfig = {
-    siteUrl: 'http://qiqiu.yippee.co.nz'
+    siteUrl: 'http://localhost:3000'
 };
 
 export default clientConfig;

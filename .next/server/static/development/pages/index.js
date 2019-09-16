@@ -103,7 +103,7 @@ module.exports =
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const clientConfig = {
-  siteUrl: 'http://qiqiu.yippee.co.nz'
+  siteUrl: 'http://localhost:3000'
 };
 /* harmony default export */ __webpack_exports__["default"] = (clientConfig);
 
@@ -147,8 +147,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
+/* harmony import */ var _styles_Style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styles/Style.css */ "./styles/Style.css");
+/* harmony import */ var _styles_Style_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_Style_css__WEBPACK_IMPORTED_MODULE_3__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -193,24 +196,19 @@ const Nav = () => {
   }, __jsx("a", {
     class: "nav-link",
     href: "#"
-  }, "Home ", __jsx("span", {
+  }, "WooNext ", __jsx("span", {
     class: "sr-only"
   }, "(current)"))), __jsx("li", {
     class: "nav-item"
   }, __jsx("a", {
     class: "nav-link",
     href: "#"
-  }, "Features")), __jsx("li", {
+  }, "Categories")), __jsx("li", {
     class: "nav-item"
   }, __jsx("a", {
     class: "nav-link",
     href: "#"
-  }, "Pricing")), __jsx("li", {
-    class: "nav-item"
-  }, __jsx("a", {
-    class: "nav-link",
-    href: "#"
-  }, "About")))));
+  }, "My account")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
@@ -231,7 +229,26 @@ __webpack_require__.r(__webpack_exports__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const Products = props => __jsx("div", null, "products");
+const Products = props => {
+  const {
+    product
+  } = props;
+  return __jsx("div", {
+    class: "card mb-3"
+  }, __jsx("h4", {
+    class: "card-header text-truncate small"
+  }, product.name), __jsx("img", {
+    src: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    alt: "Card image"
+  }), __jsx("div", {
+    class: "card-body"
+  }, __jsx("h6", {
+    class: "card-subtitle text-center"
+  }, product.price), __jsx("a", {
+    href: "",
+    className: "btn btn-secondary text-center"
+  }, " View")));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Products);
 
@@ -260,20 +277,38 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const Index = () => {
-  return __jsx("div", null, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, "Hello world"));
+const Index = props => {
+  const {
+    products
+  } = props;
+  return __jsx("div", null, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, __jsx("div", {
+    className: "product-container"
+  }, products.length ? products.map(product => __jsx(_components_Products__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    key: product.id,
+    product: product
+  })) : '')));
 };
 
 Index.getInitialProps = async () => {
   const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(`${_client_config__WEBPACK_IMPORTED_MODULE_3__["default"].siteUrl}/getProducts`);
   const productsData = await res.json();
-  console.log(productsData);
   return {
     products: productsData
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
+
+/***/ }),
+
+/***/ "./styles/Style.css":
+/*!**************************!*\
+  !*** ./styles/Style.css ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
